@@ -131,7 +131,7 @@ export const TechnicianDashboard: React.FC = () => {
             </span>
           </div>
           <p className="mt-1 text-xs text-gray-400">
-            Manage your repair orders, issue customer tags, and update status on Botchain Testnet.
+            Manage your repair orders, issue customer tags, and update status on BOT Chain Mainnet.
           </p>
         </div>
 

@@ -2,7 +2,7 @@
 
 **RepairTag** is a decentralized, on-chain repair tracking dApp designed for phone repair shops, laptop technicians, and electronics repair businesses.
 
-Technicians log repair orders directly onto the **Botchain Testnet** and update their status in real-time. Customers can enter their unique **Repair ID** to check the status of their repair without needing to connect a wallet or contact the technician.
+Technicians log repair orders directly onto **BOT Chain Mainnet** and update their status in real-time. Customers can enter their unique **Repair ID** to check the status of their repair without needing to connect a wallet or contact the technician.
 
 ---
 
@@ -13,27 +13,25 @@ Technicians log repair orders directly onto the **Botchain Testnet** and update 
 * **Tamper-Proof & Secure**: Only the technician who created the repair ticket has authorization to update its status.
 * **Strict Privacy by Design**: No customer names, phone numbers, home addresses, or sensitive personal identifiable information (PII) are stored on-chain.
 * **Visual Progress Tracker**: Clear graphical step-by-step progress tracking from shop intake to final pickup.
-* **Botchain Mainnet Native**: Configured for Botchain Mainnet (Chain ID 677) with block explorer integration via [BotchainScan](https://scan.botchain.ai).
+* **BOT Chain Mainnet Native**: Built natively on BOT Chain Mainnet with block explorer verification via [BotchainScan](https://scan.botchain.ai).
 
 ---
 
 ## ⛓️ Blockchain & Network Details
 
-### Mainnet (Production)
-* **Network Name**: Botchain Mainnet
+* **Network Name**: BOT Chain Mainnet
 * **Chain ID**: `677`
 * **RPC URL**: `https://rpc.botchain.ai`
 * **Block Explorer**: `https://scan.botchain.ai`
-* **Currency Symbol**: `BOT`
+* **Native Currency**: `BOT`
 * **Verified Contract**: [`0x33eDC96eC0cF2A367Ea881970b95eF96B1d0F224`](https://scan.botchain.ai/address/0x33eDC96eC0cF2A367Ea881970b95eF96B1d0F224#code)
 
-### Testnet
-* **Network Name**: Botchain Testnet
-* **Chain ID**: `968`
-* **RPC URL**: `https://rpc.bohr.life`
-* **Block Explorer**: `https://scan.bohr.life`
-* **Currency Symbol**: `BOHR`
-* **Verified Contract**: [`0x1aE4071fba5659870C0bA001DfaF029BB85e8F61`](https://scan.bohr.life/address/0x1aE4071fba5659870C0bA001DfaF029BB85e8F61#code)
+---
+
+## 🌐 Official BOT Chain Ecosystem Links
+
+* **BOT Chain website**: [https://botchain.ai](https://botchain.ai)
+* **BOT Chain explorer**: [https://scan.botchain.ai](https://scan.botchain.ai)
 
 ---
 
@@ -41,7 +39,7 @@ Technicians log repair orders directly onto the **Botchain Testnet** and update 
 
 * **Frontend**: Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS
 * **Web3 Integration**: Wagmi v2, Viem v2, MetaMask / Injected Wallets
-* **Smart Contracts**: Solidity ^0.8.20, Hardhat 2.x / 3.x, Ethers v6, Chai
+* **Smart Contracts**: Solidity ^0.8.20, Hardhat, Ethers v6, Chai
 
 ---
 
@@ -50,7 +48,7 @@ Technicians log repair orders directly onto the **Botchain Testnet** and update 
 ```
 ├── app/                  # Next.js App Router pages and layouts
 │   ├── globals.css       # Tailwind CSS and global styling
-│   ├── layout.tsx        # Root layout with Wagmi & QueryClient providers
+│   ├── layout.tsx        # Root layout with Wagmi & QueryClient providers + BOT Chain ecosystem footer
 │   └── page.tsx          # Main RepairTag dashboard
 ├── components/           # UI components
 │   ├── CreateRepairModal.tsx  # Technician new repair modal
@@ -65,11 +63,12 @@ Technicians log repair orders directly onto the **Botchain Testnet** and update 
 ├── contracts/            # Smart contracts
 │   └── RepairTag.sol     # Core repair tracking Solidity contract
 ├── lib/                  # Utilities and configs
-│   ├── chains.ts         # Botchain Testnet definition (Viem)
+│   ├── chains.ts         # BOT Chain Mainnet definition (Viem)
 │   ├── contracts.ts      # Contract ABI, types, addresses & helpers
+│   ├── deployment.json   # Active contract deployment metadata
 │   └── wagmi.ts          # Wagmi configuration
 ├── scripts/              # Hardhat scripts
-│   └── deploy.ts         # Deployment script for Botchain Testnet
+│   └── deploy.ts         # Deployment script for BOT Chain Mainnet
 ├── test/                 # Hardhat test suite
 │   └── RepairTag.test.ts # 14 comprehensive unit tests
 ├── hardhat.config.ts     # Hardhat compiler & network config
@@ -117,27 +116,22 @@ Copy `.env.example` to `.env`:
 cp .env.example .env
 ```
 
-Set your configuration:
+Configuration:
 
 ```env
-# Botchain Testnet
-BOTCHAIN_RPC_URL=https://rpc.bohr.life
-NEXT_PUBLIC_BOTCHAIN_RPC_URL=https://rpc.bohr.life
-NEXT_PUBLIC_BOTCHAIN_CHAIN_ID=968
-NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL=https://scan.bohr.life
-
-# Technician / Deployer Private Key (without 0x prefix or with 0x)
+BOTCHAIN_RPC_URL=https://rpc.botchain.ai
+NEXT_PUBLIC_BOTCHAIN_RPC_URL=https://rpc.botchain.ai
+NEXT_PUBLIC_BOTCHAIN_CHAIN_ID=677
+NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL=https://scan.botchain.ai
 PRIVATE_KEY=your_private_key_here
-
-# Deployed Contract Address
-NEXT_PUBLIC_CONTRACT_ADDRESS=
+NEXT_PUBLIC_CONTRACT_ADDRESS=0x33eDC96eC0cF2A367Ea881970b95eF96B1d0F224
 ```
 
 ---
 
 ## 🧪 Testing
 
-Run the full smart contract test suite covering ID generation, unauthorized updates, description validation, and lifecycle controls:
+Run the full smart contract test suite:
 
 ```bash
 npm test
@@ -147,19 +141,13 @@ All 14 unit tests will execute against Hardhat's in-memory EVM.
 
 ---
 
-## 🚢 Deployment to Botchain Testnet
+## 🚢 Deployment to BOT Chain Mainnet
 
-1. Ensure your deployer account has testnet funds on Botchain Testnet (`https://rpc.bohr.life`).
-2. Add your private key to `PRIVATE_KEY` in `.env`.
-3. Run the deployment script:
+To deploy a fresh instance of the contract:
 
 ```bash
-npm run deploy:botchain
+npm run deploy:mainnet
 ```
-
-The script will deploy `RepairTag.sol` to Botchain Testnet and automatically save the deployment details to `lib/deployment.json`.
-
-Then update `NEXT_PUBLIC_CONTRACT_ADDRESS` in `.env` with the deployed address.
 
 ---
 
@@ -187,4 +175,3 @@ npm start
 1. **No PII**: RepairTag explicitly avoids storing names, emails, phone numbers, or physical addresses on-chain.
 2. **Access Control**: Only the creator technician address can update a repair order's status.
 3. **Immutability of Final States**: Once marked as `Completed` or `Cancelled`, repairs cannot be modified further.
-

@@ -3,16 +3,16 @@
 import React from "react";
 import { useAccount, useChainId, useSwitchChain } from "wagmi";
 import { AlertTriangle, ArrowRight } from "lucide-react";
-import { activeChain, botchainMainnet, botchainTestnet } from "@/lib/chains";
+import { botchainMainnet } from "@/lib/chains";
 
 export const NetworkBanner: React.FC = () => {
   const { isConnected } = useAccount();
   const chainId = useChainId();
   const { switchChain, isPending } = useSwitchChain();
 
-  const isSupported = chainId === botchainMainnet.id || chainId === botchainTestnet.id;
+  const isMainnet = chainId === botchainMainnet.id;
 
-  if (!isConnected || isSupported) {
+  if (!isConnected || isMainnet) {
     return null;
   }
 
@@ -23,15 +23,15 @@ export const NetworkBanner: React.FC = () => {
           <AlertTriangle className="h-4 w-4 text-amber-400 shrink-0" />
           <span>
             You are connected to an unsupported network. Please switch to{" "}
-            <strong>{activeChain.name} (Chain ID {activeChain.id})</strong> to interact with RepairTag.
+            <strong>BOT Chain Mainnet (Chain ID {botchainMainnet.id})</strong> to interact with RepairTag.
           </span>
         </div>
         <button
-          onClick={() => switchChain({ chainId: activeChain.id })}
+          onClick={() => switchChain({ chainId: botchainMainnet.id })}
           disabled={isPending}
           className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500 px-3 py-1 text-xs font-semibold text-charcoal-950 transition-colors hover:bg-amber-400 disabled:opacity-50"
         >
-          <span>{isPending ? "Switching..." : "Switch to Mainnet"}</span>
+          <span>{isPending ? "Switching..." : "Switch to BOT Chain"}</span>
           <ArrowRight className="h-3.5 w-3.5" />
         </button>
       </div>

@@ -182,7 +182,7 @@ export const UpdateStatusModal: React.FC<UpdateStatusModalProps> = ({
             {isConfirming && (
               <div className="flex items-center gap-3 rounded-xl border border-brandGreen/30 bg-brandGreen/10 p-3.5 text-xs text-brandGreen-light">
                 <Loader2 className="h-4 w-4 animate-spin shrink-0 text-brandGreen" />
-                <span>Recording status change on BohrScan block...</span>
+                <span>Recording status change on BOT Chain Mainnet block...</span>
               </div>
             )}
 
@@ -228,7 +228,7 @@ export const UpdateStatusModal: React.FC<UpdateStatusModalProps> = ({
             <div>
               <h4 className="text-lg font-bold text-white">Status Updated!</h4>
               <p className="mt-1 text-xs text-gray-400">
-                Repair #{repair.id.toString()} has been updated on Botchain Testnet.
+                Repair #{repair.id.toString()} has been updated on BOT Chain Mainnet.
               </p>
             </div>
 

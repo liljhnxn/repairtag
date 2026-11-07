@@ -149,7 +149,7 @@ export const CreateRepairModal: React.FC<CreateRepairModalProps> = ({
             {isConfirming && (
               <div className="flex items-center gap-3 rounded-xl border border-brandGreen/30 bg-brandGreen/10 p-3.5 text-xs text-brandGreen-light">
                 <Loader2 className="h-4 w-4 animate-spin shrink-0 text-brandGreen" />
-                <span>Confirming on Botchain Testnet block...</span>
+                <span>Confirming on BOT Chain Mainnet block...</span>
               </div>
             )}
 
@@ -189,7 +189,7 @@ export const CreateRepairModal: React.FC<CreateRepairModalProps> = ({
             <div>
               <h4 className="text-lg font-bold text-white">Repair Successfully Created!</h4>
               <p className="mt-1 text-xs text-gray-400">
-                The repair ticket is permanently recorded on Botchain Testnet.
+                The repair ticket is permanently recorded on BOT Chain Mainnet.
               </p>
             </div>
 
