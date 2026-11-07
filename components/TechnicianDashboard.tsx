@@ -22,7 +22,7 @@ import {
   RepairStatus,
   formatDate,
 } from "@/lib/contracts";
-import { botchainTestnet } from "@/lib/chains";
+import { activeChain } from "@/lib/chains";
 import { StatusBadge } from "./StatusBadge";
 import { CreateRepairModal } from "./CreateRepairModal";
 import { UpdateStatusModal } from "./UpdateStatusModal";
@@ -50,7 +50,7 @@ export const TechnicianDashboard: React.FC = () => {
 
     try {
       const client = createPublicClient({
-        chain: botchainTestnet,
+        chain: activeChain,
         transport: http(),
       });
 

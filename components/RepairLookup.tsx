@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Search, Loader2, ExternalLink, Calendar, User, FileText, Check, Copy } from "lucide-react";
 import { createPublicClient, http } from "viem";
-import { botchainTestnet } from "@/lib/chains";
+import { activeChain } from "@/lib/chains";
 import {
   CONTRACT_ADDRESS,
   REPAIR_TAG_ABI,
@@ -43,9 +43,9 @@ export const RepairLookup: React.FC = () => {
     setRepair(null);
 
     try {
-      // Create independent public client targeting Botchain Testnet so customers don't need a wallet
+      // Create independent public client targeting Botchain so customers don't need a wallet
       const client = createPublicClient({
-        chain: botchainTestnet,
+        chain: activeChain,
         transport: http(),
       });
 
@@ -158,7 +158,7 @@ export const RepairLookup: React.FC = () => {
                 <div className="flex items-center gap-2 mt-1">
                   <span className="text-xs text-gray-400">Technician:</span>
                   <a
-                    href={`${botchainTestnet.blockExplorers.default.url}/address/${repair.technician}`}
+                    href={`${activeChain.blockExplorers.default.url}/address/${repair.technician}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 font-mono text-xs text-brandPurple-light hover:underline"
@@ -217,12 +217,12 @@ export const RepairLookup: React.FC = () => {
               </button>
 
               <a
-                href={`${botchainTestnet.blockExplorers.default.url}/address/${CONTRACT_ADDRESS}`}
+                href={`${activeChain.blockExplorers.default.url}/address/${CONTRACT_ADDRESS}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-gray-400 hover:text-brandPurple-light transition-colors"
               >
-                <span>Verified on BohrScan</span>
+                <span>Verified on {activeChain.blockExplorers.default.name}</span>
                 <ExternalLink className="h-3 w-3" />
               </a>
             </div>

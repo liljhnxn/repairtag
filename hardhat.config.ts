@@ -11,7 +11,8 @@ const formattedKey = rawKey
     : `0x${rawKey}`
   : undefined;
 
-const BOTCHAIN_RPC_URL = process.env.BOTCHAIN_RPC_URL || "https://rpc.bohr.life";
+const BOTCHAIN_MAINNET_RPC = process.env.BOTCHAIN_RPC_URL || "https://rpc.botchain.ai";
+const BOTCHAIN_TESTNET_RPC = "https://rpc.bohr.life";
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -31,17 +32,31 @@ const config: HardhatUserConfig = {
       url: "http://127.0.0.1:8545",
       chainId: 31337,
     },
+    botchainMainnet: {
+      url: BOTCHAIN_MAINNET_RPC,
+      chainId: 677,
+      accounts: formattedKey ? [formattedKey] : [],
+    },
     botchain: {
-      url: BOTCHAIN_RPC_URL,
+      url: BOTCHAIN_TESTNET_RPC,
       chainId: 968,
       accounts: formattedKey ? [formattedKey] : [],
     },
   },
   etherscan: {
     apiKey: {
+      botchainMainnet: "empty",
       botchain: "empty",
     },
     customChains: [
+      {
+        network: "botchainMainnet",
+        chainId: 677,
+        urls: {
+          apiURL: "https://scan.botchain.ai/api",
+          browserURL: "https://scan.botchain.ai",
+        },
+      },
       {
         network: "botchain",
         chainId: 968,

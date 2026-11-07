@@ -41,7 +41,7 @@ export default function Home() {
         </h1>
 
         <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto">
-          Log repair tickets directly on Botchain Testnet. Customers check repair status instantly
+          Log repair tickets directly on Botchain Mainnet. Customers check repair status instantly
           with their Repair ID without phone calls or wallet requirements.
         </p>
 
@@ -57,7 +57,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-1.5 rounded-lg border border-charcoal-700 bg-charcoal-850/80 px-3 py-1.5">
             <Zap className="h-3.5 w-3.5 text-amber-400" />
-            <span>Botchain Testnet (Chain 968)</span>
+            <span>Botchain Mainnet (Chain 677)</span>
           </div>
         </div>
       </section>

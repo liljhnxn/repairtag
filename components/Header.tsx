@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { useAccount, useConnect, useDisconnect, useChainId, useSwitchChain } from "wagmi";
-import { Wrench, Shield, Wallet, LogOut, ChevronDown, Check } from "lucide-react";
+import { Wrench, Wallet, LogOut, ChevronDown } from "lucide-react";
 import { shortenAddress } from "@/lib/contracts";
-import { botchainTestnet } from "@/lib/chains";
+import { activeChain, botchainMainnet, botchainTestnet } from "@/lib/chains";
 
 export const Header: React.FC = () => {
   const { address, isConnected } = useAccount();
@@ -14,7 +14,9 @@ export const Header: React.FC = () => {
   const { switchChain } = useSwitchChain();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const isCorrectNetwork = chainId === botchainTestnet.id;
+  const isMainnet = chainId === botchainMainnet.id;
+  const isTestnet = chainId === botchainTestnet.id;
+  const isSupported = isMainnet || isTestnet;
 
   const handleConnect = () => {
     const injectedConnector = connectors.find((c) => c.id === "injected") || connectors[0];
@@ -39,7 +41,7 @@ export const Header: React.FC = () => {
                 Repair<span className="text-brandPurple-light">Tag</span>
               </span>
               <span className="hidden sm:inline-block rounded border border-brandPurple/30 bg-brandPurple/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-brandPurple-light">
-                Botchain
+                {isMainnet ? "Mainnet" : isTestnet ? "Testnet" : "Botchain"}
               </span>
             </div>
             <p className="text-xs text-gray-400">Every repair, tracked.</p>
@@ -51,18 +53,18 @@ export const Header: React.FC = () => {
           {/* Network indicator */}
           {isConnected && (
             <div className="hidden md:flex items-center">
-              {isCorrectNetwork ? (
+              {isSupported ? (
                 <div className="flex items-center gap-1.5 rounded-lg border border-charcoal-700 bg-charcoal-850 px-3 py-1.5 text-xs text-gray-300">
                   <span className="h-2 w-2 rounded-full bg-brandGreen shadow-[0_0_8px_rgba(16,185,129,0.7)]" />
-                  <span>Botchain Testnet</span>
+                  <span>{isMainnet ? "Botchain Mainnet" : "Botchain Testnet"}</span>
                 </div>
               ) : (
                 <button
-                  onClick={() => switchChain?.({ chainId: botchainTestnet.id })}
+                  onClick={() => switchChain?.({ chainId: activeChain.id })}
                   className="flex items-center gap-1.5 rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 py-1.5 text-xs font-medium text-amber-400 hover:bg-amber-500/20 transition-colors"
                 >
                   <span className="h-2 w-2 rounded-full bg-amber-400 animate-ping" />
-                  <span>Switch to Botchain</span>
+                  <span>Switch to Mainnet</span>
                 </button>
               )}
             </div>
@@ -118,4 +120,3 @@ export const Header: React.FC = () => {
     </header>
   );
 };
-

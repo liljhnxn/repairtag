@@ -29,19 +29,19 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <footer className="border-t border-charcoal-800 bg-charcoal-900/40 py-6 text-center text-xs text-gray-500">
             <div className="mx-auto max-w-7xl px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <p>RepairTag &bull; Decentralized Repair Tracking on Botchain Testnet (Chain ID 968)</p>
+              <p>RepairTag &bull; Decentralized Repair Tracking on Botchain Mainnet (Chain ID 677)</p>
               <div className="flex items-center gap-4">
                 <a
-                  href="https://scan.bohr.life"
+                  href="https://scan.botchain.ai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gray-300 transition-colors"
                 >
-                  BohrScan Explorer
+                  BotchainScan Explorer
                 </a>
                 <span>&bull;</span>
                 <a
-                  href="https://rpc.bohr.life"
+                  href="https://rpc.botchain.ai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gray-300 transition-colors"

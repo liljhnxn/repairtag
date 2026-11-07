@@ -1,10 +1,11 @@
 # RepairTag — Whitepaper & Pitch Deck
 
 **Decentralized, Trustless Repair Tracking for Modern Workshops**  
-*Built on Botchain Testnet (Chain ID: 968)*  
+*Built on Botchain Mainnet (Chain ID: 677)*  
 
-* **Contract Address:** `0x1aE4071fba5659870C0bA001DfaF029BB85e8F61`  
-* **Explorer Verification:** [BohrScan Verification](https://scan.bohr.life/address/0x1aE4071fba5659870C0bA001DfaF029BB85e8F61#code)  
+* **Mainnet Contract Address:** `0x33eDC96eC0cF2A367Ea881970b95eF96B1d0F224`  
+* **Explorer Verification:** [BotchainScan Verification](https://scan.botchain.ai/address/0x33eDC96eC0cF2A367Ea881970b95eF96B1d0F224#code)  
+* **Testnet Contract (Chain 968):** `0x1aE4071fba5659870C0bA001DfaF029BB85e8F61`  
 * **Repository:** [github.com/liljhnxn/repairtag](https://github.com/liljhnxn/repairtag)  
 
 ---
@@ -150,17 +151,18 @@ Blockchain immutability presents privacy challenges if sensitive consumer data i
 
 ## 6. Deployment & Network Configuration
 
-| Parameter | Configuration |
-| :--- | :--- |
-| **Network** | Botchain Testnet |
-| **Chain ID** | `968` |
-| **RPC Endpoint** | `https://rpc.bohr.life` |
-| **Block Explorer** | `https://scan.bohr.life` |
-| **Native Currency** | BOHR |
-| **Contract Address** | `0x1aE4071fba5659870C0bA001DfaF029BB85e8F61` |
-| **Verification Status** | Fully Verified on BohrScan |
+| Parameter | Mainnet Configuration | Testnet Configuration |
+| :--- | :--- | :--- |
+| **Network** | **Botchain Mainnet** | Botchain Testnet |
+| **Chain ID** | **`677`** | `968` |
+| **RPC Endpoint** | `https://rpc.botchain.ai` | `https://rpc.bohr.life` |
+| **Block Explorer** | `https://scan.botchain.ai` | `https://scan.bohr.life` |
+| **Native Currency** | **BOT** | BOHR |
+| **Contract Address** | **`0x33eDC96eC0cF2A367Ea881970b95eF96B1d0F224`** | `0x1aE4071fba5659870C0bA001DfaF029BB85e8F61` |
+| **Verification Status** | **Verified on BotchainScan** | Verified on BohrScan |
 
 ---
 
 ## 7. Conclusion
 RepairTag bridges real-world small business operations with EVM blockchain utility. By combining immutable state transitions with a friction-free consumer portal, RepairTag demonstrates how decentralized ledgers can streamline everyday commercial workflows while preserving absolute customer privacy.
+

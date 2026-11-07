@@ -13,17 +13,27 @@ Technicians log repair orders directly onto the **Botchain Testnet** and update 
 * **Tamper-Proof & Secure**: Only the technician who created the repair ticket has authorization to update its status.
 * **Strict Privacy by Design**: No customer names, phone numbers, home addresses, or sensitive personal identifiable information (PII) are stored on-chain.
 * **Visual Progress Tracker**: Clear graphical step-by-step progress tracking from shop intake to final pickup.
-* **Botchain Testnet Native**: Configured for Botchain Testnet (Chain ID 968) with block explorer integration via [BohrScan](https://scan.bohr.life).
+* **Botchain Mainnet Native**: Configured for Botchain Mainnet (Chain ID 677) with block explorer integration via [BotchainScan](https://scan.botchain.ai).
 
 ---
 
 ## ⛓️ Blockchain & Network Details
 
+### Mainnet (Production)
+* **Network Name**: Botchain Mainnet
+* **Chain ID**: `677`
+* **RPC URL**: `https://rpc.botchain.ai`
+* **Block Explorer**: `https://scan.botchain.ai`
+* **Currency Symbol**: `BOT`
+* **Verified Contract**: [`0x33eDC96eC0cF2A367Ea881970b95eF96B1d0F224`](https://scan.botchain.ai/address/0x33eDC96eC0cF2A367Ea881970b95eF96B1d0F224#code)
+
+### Testnet
 * **Network Name**: Botchain Testnet
 * **Chain ID**: `968`
 * **RPC URL**: `https://rpc.bohr.life`
 * **Block Explorer**: `https://scan.bohr.life`
 * **Currency Symbol**: `BOHR`
+* **Verified Contract**: [`0x1aE4071fba5659870C0bA001DfaF029BB85e8F61`](https://scan.bohr.life/address/0x1aE4071fba5659870C0bA001DfaF029BB85e8F61#code)
 
 ---
 

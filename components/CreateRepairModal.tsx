@@ -5,7 +5,7 @@ import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { decodeEventLog } from "viem";
 import { X, Loader2, CheckCircle2, AlertCircle, ExternalLink, Plus, Copy, Check } from "lucide-react";
 import { CONTRACT_ADDRESS, REPAIR_TAG_ABI } from "@/lib/contracts";
-import { botchainTestnet } from "@/lib/chains";
+import { activeChain } from "@/lib/chains";
 
 interface CreateRepairModalProps {
   isOpen: boolean;
@@ -218,12 +218,12 @@ export const CreateRepairModal: React.FC<CreateRepairModalProps> = ({
 
             {txHash && (
               <a
-                href={`${botchainTestnet.blockExplorers.default.url}/tx/${txHash}`}
+                href={`${activeChain.blockExplorers.default.url}/tx/${txHash}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs text-brandPurple-light hover:underline"
               >
-                <span>View Transaction on BohrScan</span>
+                <span>View Transaction on {activeChain.blockExplorers.default.name}</span>
                 <ExternalLink className="h-3.5 w-3.5" />
               </a>
             )}
