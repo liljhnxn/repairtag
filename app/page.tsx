@@ -13,10 +13,11 @@ import {
   Sparkles,
   Lock,
   Layers,
-  Globe,
   ExternalLink,
-  Cpu,
 } from "lucide-react";
+import Image from "next/image";
+
+const MAINNET_CONTRACT = "0x33eDC96eC0cF2A367Ea881970b95eF96B1d0F224";
 
 export default function Home() {
   const { isConnected } = useAccount();
@@ -57,8 +58,16 @@ export default function Home() {
             <Lock className="h-3.5 w-3.5 text-brandGreen" />
             <span>No Customer PII On-Chain</span>
           </div>
-          <div className="flex items-center gap-1.5 rounded-lg border border-charcoal-700 bg-charcoal-850/80 px-3 py-1.5">
-            <Zap className="h-3.5 w-3.5 text-amber-400" />
+          <div className="flex items-center gap-2 rounded-lg border border-brandGreen/40 bg-charcoal-850/80 px-3 py-1.5 text-gray-200">
+            <div className="h-4 w-4 shrink-0 overflow-hidden rounded bg-black">
+              <Image
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                width={16}
+                height={16}
+                className="h-full w-full object-contain"
+              />
+            </div>
             <span>BOT Chain Mainnet (Chain 677)</span>
           </div>
         </div>
@@ -129,13 +138,17 @@ export default function Home() {
       </section>
 
       {/* BOT Chain Ecosystem Section */}
-      <section className="rounded-2xl border border-charcoal-700 bg-charcoal-850/70 p-6 sm:p-8 backdrop-blur-xl shadow-xl">
+      <section className="rounded-2xl border border-charcoal-700 bg-charcoal-850/80 p-6 sm:p-8 backdrop-blur-xl shadow-xl">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brandPurple to-brandGreen p-0.5 shadow-lg shadow-brandPurple/20 shrink-0">
-              <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-charcoal-900">
-                <Cpu className="h-6 w-6 text-brandGreen" />
-              </div>
+            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-brandGreen/40 bg-black p-1.5 shadow-lg shadow-brandGreen/20">
+              <Image
+                src="/botchain-logo.png"
+                alt="BOT Chain Official Logo"
+                width={56}
+                height={56}
+                className="h-full w-full object-contain"
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -151,34 +164,62 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
+            {/* BOT Chain website with Logo at front */}
             <a
               href="https://botchain.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-charcoal-700 bg-charcoal-900 px-4 py-2.5 text-xs font-semibold text-white hover:border-brandPurple hover:bg-charcoal-800 transition-all shadow-md"
+              className="inline-flex items-center gap-2.5 rounded-xl border border-charcoal-700 bg-charcoal-900 px-4 py-2.5 text-xs font-semibold text-white hover:border-brandPurple hover:bg-charcoal-800 transition-all shadow-md"
             >
-              <Globe className="h-4 w-4 text-brandPurple-light" />
+              <div className="h-4 w-4 shrink-0 overflow-hidden rounded bg-black">
+                <Image
+                  src="/botchain-logo.png"
+                  alt="BOT Chain"
+                  width={16}
+                  height={16}
+                  className="h-full w-full object-contain"
+                />
+              </div>
               <span>BOT Chain website</span>
               <ExternalLink className="h-3 w-3 text-gray-400" />
             </a>
 
+            {/* BOT Chain explorer with Logo at front */}
             <a
               href="https://scan.botchain.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-brandGreen/40 bg-brandGreen/10 px-4 py-2.5 text-xs font-semibold text-brandGreen-light hover:bg-brandGreen/20 transition-all shadow-md"
+              className="inline-flex items-center gap-2.5 rounded-xl border border-brandGreen/40 bg-charcoal-900 px-4 py-2.5 text-xs font-semibold text-brandGreen-light hover:bg-charcoal-800 transition-all shadow-md"
             >
-              <ShieldCheck className="h-4 w-4 text-brandGreen" />
+              <div className="h-4 w-4 shrink-0 overflow-hidden rounded bg-black">
+                <Image
+                  src="/botchain-logo.png"
+                  alt="BOT Chain Explorer"
+                  width={16}
+                  height={16}
+                  className="h-full w-full object-contain"
+                />
+              </div>
               <span>BOT Chain explorer</span>
               <ExternalLink className="h-3 w-3 text-brandGreen" />
             </a>
 
+            {/* Mainnet Verified Contract Link */}
             <a
-              href="https://scan.botchain.ai/address/0x33eDC96eC0cF2A367Ea881970b95eF96B1d0F224#code"
+              href={`https://scan.botchain.ai/address/${MAINNET_CONTRACT}#code`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brandPurple to-brandGreen px-4 py-2.5 text-xs font-semibold text-white shadow-md hover:opacity-95 transition-all"
             >
+              <div className="h-4 w-4 shrink-0 overflow-hidden rounded bg-black">
+                <Image
+                  src="/botchain-logo.png"
+                  alt="Verified Contract"
+                  width={16}
+                  height={16}
+                  className="h-full w-full object-contain"
+                />
+              </div>
               <span>Verified Contract</span>
               <ExternalLink className="h-3 w-3" />
             </a>

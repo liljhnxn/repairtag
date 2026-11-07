@@ -217,12 +217,19 @@ export const RepairLookup: React.FC = () => {
               </button>
 
               <a
-                href={`${activeChain.blockExplorers.default.url}/address/${CONTRACT_ADDRESS}`}
+                href={`${activeChain.blockExplorers.default.url}/address/${CONTRACT_ADDRESS}#code`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-gray-400 hover:text-brandPurple-light transition-colors"
+                className="inline-flex items-center gap-1.5 text-gray-400 hover:text-brandPurple-light transition-colors"
               >
-                <span>Verified on {activeChain.blockExplorers.default.name}</span>
+                <div className="h-3.5 w-3.5 shrink-0 overflow-hidden rounded bg-black">
+                  <img
+                    src="/botchain-logo.png"
+                    alt="BOT Chain"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+                <span>Verified on BotchainScan ({CONTRACT_ADDRESS.slice(0, 6)}...{CONTRACT_ADDRESS.slice(-4)})</span>
                 <ExternalLink className="h-3 w-3" />
               </a>
             </div>

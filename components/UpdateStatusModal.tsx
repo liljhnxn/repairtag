@@ -246,7 +246,14 @@ export const UpdateStatusModal: React.FC<UpdateStatusModalProps> = ({
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs text-brandPurple-light hover:underline"
                 >
-                  <span>View Transaction on {activeChain.blockExplorers.default.name}</span>
+                  <div className="h-3.5 w-3.5 shrink-0 overflow-hidden rounded bg-black">
+                    <img
+                      src="/botchain-logo.png"
+                      alt="BOT Chain"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                  <span>View Transaction on BotchainScan</span>
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               </div>

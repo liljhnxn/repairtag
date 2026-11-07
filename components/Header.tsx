@@ -5,6 +5,7 @@ import { useAccount, useConnect, useDisconnect, useChainId, useSwitchChain } fro
 import { Wrench, Wallet, LogOut, ChevronDown } from "lucide-react";
 import { shortenAddress } from "@/lib/contracts";
 import { botchainMainnet } from "@/lib/chains";
+import Image from "next/image";
 
 export const Header: React.FC = () => {
   const { address, isConnected } = useAccount();
@@ -38,8 +39,9 @@ export const Header: React.FC = () => {
               <span className="text-xl font-bold tracking-tight text-white">
                 Repair<span className="text-brandPurple-light">Tag</span>
               </span>
-              <span className="hidden sm:inline-block rounded border border-brandPurple/30 bg-brandPurple/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-brandPurple-light">
-                BOT Chain
+              <span className="hidden sm:inline-flex items-center gap-1 rounded border border-brandPurple/30 bg-brandPurple/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-brandPurple-light">
+                <span className="h-2 w-2 rounded-full bg-brandGreen" />
+                <span>BOT Chain</span>
               </span>
             </div>
             <p className="text-xs text-gray-400">Every repair, tracked.</p>
@@ -52,8 +54,17 @@ export const Header: React.FC = () => {
           {isConnected && (
             <div className="hidden md:flex items-center">
               {isMainnet ? (
-                <div className="flex items-center gap-1.5 rounded-lg border border-charcoal-700 bg-charcoal-850 px-3 py-1.5 text-xs text-gray-300">
-                  <span className="h-2 w-2 rounded-full bg-brandGreen shadow-[0_0_8px_rgba(16,185,129,0.7)]" />
+                <div className="flex items-center gap-2 rounded-lg border border-charcoal-700 bg-charcoal-850 px-3 py-1.5 text-xs text-gray-200">
+                  <div className="h-4 w-4 shrink-0 overflow-hidden rounded bg-black">
+                    <Image
+                      src="/botchain-logo.png"
+                      alt="BOT Chain"
+                      width={16}
+                      height={16}
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                  <span className="h-1.5 w-1.5 rounded-full bg-brandGreen shadow-[0_0_8px_rgba(16,185,129,0.7)]" />
                   <span>BOT Chain Mainnet</span>
                 </div>
               ) : (

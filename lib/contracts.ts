@@ -72,20 +72,23 @@ export const STATUS_META: Record<
   },
 };
 
-let deployedFallback = "0x0000000000000000000000000000000000000000";
+// Primary verified BOT Chain Mainnet contract address
+export const MAINNET_CONTRACT_ADDRESS: Address = "0x33eDC96eC0cF2A367Ea881970b95eF96B1d0F224";
+
+let deployedFallback: Address = MAINNET_CONTRACT_ADDRESS;
 try {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const deployment = require("./deployment.json");
-  if (deployment?.address) {
-    deployedFallback = deployment.address;
+  if (deployment?.address && deployment.address !== "0x0000000000000000000000000000000000000000") {
+    deployedFallback = deployment.address as Address;
   }
 } catch {
-  // No deployment file found yet
+  // Fallback to verified mainnet address
 }
 
 export const CONTRACT_ADDRESS: Address =
   (process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as Address) ||
-  (deployedFallback as Address);
+  deployedFallback;
 
 export const REPAIR_TAG_ABI = [
   {
